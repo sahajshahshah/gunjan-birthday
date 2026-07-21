@@ -1,1 +1,497 @@
+/* =========================================
+   GUNJAN'S BIRTHDAY WORLD 🎀
+   First Interactive Version
+========================================= */
 
+const introScene = document.getElementById("introScene");
+const letterScene = document.getElementById("letterScene");
+const welcomeLetterScene = document.getElementById("welcomeLetterScene");
+const birthdayScene = document.getElementById("birthdayScene");
+
+const continueBtn = document.getElementById("continueBtn");
+const openLetterBtn = document.getElementById("openLetterBtn");
+const enterBtn = document.getElementById("enterBtn");
+const journeyBtn = document.getElementById("journeyBtn");
+
+const envelope = document.getElementById("envelope");
+const catPeek = document.getElementById("catPeek");
+const sparkleLayer = document.getElementById("sparkleLayer");
+
+
+/* =========================================
+   CHANGE SCENE
+========================================= */
+
+function showScene(scene) {
+
+    const scenes = document.querySelectorAll(".scene");
+
+    scenes.forEach(function(currentScene) {
+        currentScene.classList.remove("active");
+    });
+
+    scene.classList.add("active");
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+
+
+/* =========================================
+   INTRO → ENVELOPE
+========================================= */
+
+continueBtn.addEventListener("click", function() {
+
+    createMagicBurst(
+        window.innerWidth / 2,
+        window.innerHeight / 2
+    );
+
+    setTimeout(function() {
+
+        showScene(letterScene);
+
+    }, 450);
+
+});
+
+
+/* =========================================
+   CAT REACTION 🐱
+========================================= */
+
+catPeek.addEventListener("click", function(event) {
+
+    event.stopPropagation();
+
+    const message =
+        catPeek.querySelector(".cat-message");
+
+    message.textContent =
+        "Okay okay... keep going 😭🎀";
+
+    catPeek.style.transform =
+        "scale(1.08) rotate(2deg)";
+
+    createMagicBurst(
+        event.clientX,
+        event.clientY
+    );
+
+    setTimeout(function() {
+
+        catPeek.style.transform = "";
+
+    }, 400);
+
+});
+
+
+/* =========================================
+   OPEN ENVELOPE 💌
+========================================= */
+
+let envelopeOpened = false;
+
+openLetterBtn.addEventListener("click", function(event) {
+
+    event.stopPropagation();
+
+    if (envelopeOpened) {
+        return;
+    }
+
+    envelopeOpened = true;
+
+    envelope.classList.add("open");
+
+    openLetterBtn.textContent =
+        "Opening your letter... 🌸";
+
+    createMagicBurst(
+        window.innerWidth / 2,
+        window.innerHeight / 2
+    );
+
+
+    setTimeout(function() {
+
+        showScene(welcomeLetterScene);
+
+    }, 1800);
+
+});
+
+
+/* =========================================
+   ENTER BIRTHDAY WORLD 🌸
+========================================= */
+
+enterBtn.addEventListener("click", function(event) {
+
+    event.stopPropagation();
+
+    createPetalCelebration();
+
+    createMagicBurst(
+        event.clientX,
+        event.clientY
+    );
+
+
+    setTimeout(function() {
+
+        showScene(birthdayScene);
+
+        birthdayCelebration();
+
+    }, 850);
+
+});
+
+
+/* =========================================
+   BIRTHDAY CELEBRATION 🎂
+========================================= */
+
+function birthdayCelebration() {
+
+    const title =
+        document.querySelector(".birthday-title");
+
+    title.animate(
+
+        [
+            {
+                transform: "scale(.75)",
+                opacity: 0
+            },
+
+            {
+                transform: "scale(1.08)",
+                opacity: 1
+            },
+
+            {
+                transform: "scale(1)",
+                opacity: 1
+            }
+        ],
+
+        {
+            duration: 1100,
+            easing: "cubic-bezier(.2,.8,.3,1.2)"
+        }
+
+    );
+
+
+    for (let i = 0; i < 16; i++) {
+
+        setTimeout(function() {
+
+            createRandomSparkle();
+
+        }, i * 90);
+
+    }
+
+}
+
+
+/* =========================================
+   TAP ANYWHERE → SPARKLES ✨
+========================================= */
+
+document.addEventListener("click", function(event) {
+
+    const target = event.target;
+
+    /*
+       Buttons already have their own
+       special effects, so don't create
+       extra sparkles directly on them.
+    */
+
+    if (target.closest("button")) {
+        return;
+    }
+
+    createTapSparkle(
+        event.clientX,
+        event.clientY
+    );
+
+});
+
+
+function createTapSparkle(x, y) {
+
+    const symbols = [
+        "✨",
+        "✦",
+        "♡",
+        "🌸"
+    ];
+
+    const sparkle =
+        document.createElement("span");
+
+    sparkle.className =
+        "tap-sparkle";
+
+    sparkle.textContent =
+        symbols[
+            Math.floor(
+                Math.random() *
+                symbols.length
+            )
+        ];
+
+    sparkle.style.left =
+        x + "px";
+
+    sparkle.style.top =
+        y + "px";
+
+    sparkleLayer.appendChild(sparkle);
+
+
+    setTimeout(function() {
+
+        sparkle.remove();
+
+    }, 850);
+
+}
+
+
+/* =========================================
+   MAGIC BURST ✨
+========================================= */
+
+function createMagicBurst(x, y) {
+
+    const symbols = [
+        "✨",
+        "✦",
+        "🌸",
+        "♡",
+        "🎀"
+    ];
+
+
+    for (let i = 0; i < 9; i++) {
+
+        const sparkle =
+            document.createElement("span");
+
+        sparkle.className =
+            "tap-sparkle";
+
+        sparkle.textContent =
+            symbols[
+                Math.floor(
+                    Math.random() *
+                    symbols.length
+                )
+            ];
+
+
+        const randomX =
+            x + (Math.random() * 130 - 65);
+
+        const randomY =
+            y + (Math.random() * 80 - 40);
+
+
+        sparkle.style.left =
+            randomX + "px";
+
+        sparkle.style.top =
+            randomY + "px";
+
+        sparkle.style.fontSize =
+            (15 + Math.random() * 12) +
+            "px";
+
+
+        sparkleLayer.appendChild(sparkle);
+
+
+        setTimeout(function() {
+
+            sparkle.remove();
+
+        }, 850);
+
+    }
+
+}
+
+
+/* =========================================
+   RANDOM SPARKLE
+========================================= */
+
+function createRandomSparkle() {
+
+    const x =
+        Math.random() *
+        window.innerWidth;
+
+    const y =
+        Math.random() *
+        window.innerHeight;
+
+    createTapSparkle(x, y);
+
+}
+
+
+/* =========================================
+   PETAL CELEBRATION 🌸
+========================================= */
+
+function createPetalCelebration() {
+
+    const petals = [
+        "🌸",
+        "🌷",
+        "✨",
+        "♡"
+    ];
+
+
+    for (let i = 0; i < 22; i++) {
+
+        const petal =
+            document.createElement("span");
+
+        petal.textContent =
+            petals[
+                Math.floor(
+                    Math.random() *
+                    petals.length
+                )
+            ];
+
+
+        petal.style.position =
+            "fixed";
+
+        petal.style.left =
+            Math.random() * 100 +
+            "vw";
+
+        petal.style.top =
+            "-40px";
+
+        petal.style.zIndex =
+            "998";
+
+        petal.style.pointerEvents =
+            "none";
+
+        petal.style.fontSize =
+            (16 + Math.random() * 18) +
+            "px";
+
+
+        document.body.appendChild(petal);
+
+
+        const horizontalMove =
+            Math.random() * 150 - 75;
+
+
+        const animation =
+            petal.animate(
+
+                [
+                    {
+                        transform:
+                            "translate(0,0) rotate(0deg)",
+
+                        opacity: 1
+                    },
+
+                    {
+                        transform:
+                            "translate(" +
+                            horizontalMove +
+                            "px,110vh) rotate(420deg)",
+
+                        opacity: .2
+                    }
+                ],
+
+                {
+                    duration:
+                        2600 +
+                        Math.random() * 1800,
+
+                    easing: "linear"
+                }
+
+            );
+
+
+        animation.onfinish =
+            function() {
+
+                petal.remove();
+
+            };
+
+    }
+
+}
+
+
+/* =========================================
+   JOURNEY BUTTON
+
+   Next time we'll connect this to the
+   photo/memory section 📸
+========================================= */
+
+journeyBtn.addEventListener("click", function(event) {
+
+    event.stopPropagation();
+
+    createMagicBurst(
+        event.clientX,
+        event.clientY
+    );
+
+    journeyBtn.textContent =
+        "Our little journey starts here... 📸🌸";
+
+});
+
+
+/* =========================================
+   LITTLE BACKGROUND MAGIC
+
+   Occasionally creates one tiny sparkle.
+========================================= */
+
+setInterval(function() {
+
+    /*
+       Keep this subtle.
+       We don't want the screen looking
+       like a sparkle explosion 😂
+    */
+
+    if (Math.random() > 0.55) {
+
+        createRandomSparkle();
+
+    }
+
+}, 3500);
