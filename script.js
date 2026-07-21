@@ -495,3 +495,229 @@ setInterval(function() {
     }
 
 }, 3500);
+
+/* =========================================
+   PHOTO JOURNEY NAVIGATION 📸🌸
+========================================= */
+
+const memoryOne = document.getElementById("memoryOne");
+const memoryTwo = document.getElementById("memoryTwo");
+const memoryThree = document.getElementById("memoryThree");
+const memoryFour = document.getElementById("memoryFour");
+const cakeBreakScene = document.getElementById("cakeBreakScene");
+
+const memoryOneBtn = document.getElementById("memoryOneBtn");
+const memoryTwoBtn = document.getElementById("memoryTwoBtn");
+const memoryThreeBtn = document.getElementById("memoryThreeBtn");
+const memoryFourBtn = document.getElementById("memoryFourBtn");
+const cakeBtn = document.getElementById("cakeBtn");
+
+const memoryCat = document.getElementById("memoryCat");
+
+
+/* =========================================
+   BIRTHDAY → MEMORY #1 🌷
+
+   journeyBtn already exists in our
+   original JavaScript.
+
+   We replace its old click behavior safely
+   by cloning the button.
+========================================= */
+
+const oldJourneyBtn = document.getElementById("journeyBtn");
+
+const newJourneyBtn = oldJourneyBtn.cloneNode(true);
+
+oldJourneyBtn.parentNode.replaceChild(
+    newJourneyBtn,
+    oldJourneyBtn
+);
+
+
+newJourneyBtn.addEventListener("click", function(event) {
+
+    event.stopPropagation();
+
+    createMagicBurst(
+        event.clientX,
+        event.clientY
+    );
+
+    setTimeout(function() {
+
+        showScene(memoryOne);
+
+    }, 450);
+
+});
+
+
+/* =========================================
+   MEMORY #1 → MEMORY #2 🌸
+========================================= */
+
+memoryOneBtn.addEventListener("click", function(event) {
+
+    event.stopPropagation();
+
+    createMagicBurst(
+        event.clientX,
+        event.clientY
+    );
+
+    setTimeout(function() {
+
+        showScene(memoryTwo);
+
+    }, 450);
+
+});
+
+
+/* =========================================
+   MEMORY #2 → MEMORY #3 📱
+========================================= */
+
+memoryTwoBtn.addEventListener("click", function(event) {
+
+    event.stopPropagation();
+
+    createMagicBurst(
+        event.clientX,
+        event.clientY
+    );
+
+    setTimeout(function() {
+
+        showScene(memoryThree);
+
+    }, 450);
+
+});
+
+
+/* =========================================
+   LITTLE CAT REACTION 🐱
+========================================= */
+
+if (memoryCat) {
+
+    memoryCat.addEventListener("click", function(event) {
+
+        event.stopPropagation();
+
+        const catText =
+            memoryCat.querySelector(".memory-cat-text");
+
+        catText.textContent =
+            "SEE? I told you 😭🌸";
+
+        createMagicBurst(
+            event.clientX,
+            event.clientY
+        );
+
+
+        memoryCat.animate(
+
+            [
+                {
+                    transform:
+                        "rotate(-2deg) scale(1)"
+                },
+
+                {
+                    transform:
+                        "rotate(4deg) scale(1.12)"
+                },
+
+                {
+                    transform:
+                        "rotate(-2deg) scale(1)"
+                }
+            ],
+
+            {
+                duration: 500,
+                easing: "ease"
+            }
+
+        );
+
+    });
+
+}
+
+
+/* =========================================
+   MEMORY #3 → MEMORY #4 ✨
+========================================= */
+
+memoryThreeBtn.addEventListener("click", function(event) {
+
+    event.stopPropagation();
+
+    createPetalCelebration();
+
+    createMagicBurst(
+        event.clientX,
+        event.clientY
+    );
+
+
+    setTimeout(function() {
+
+        showScene(memoryFour);
+
+    }, 700);
+
+});
+
+
+/* =========================================
+   MEMORY #4 → FUNNY CAT BREAK 😂
+========================================= */
+
+memoryFourBtn.addEventListener("click", function(event) {
+
+    event.stopPropagation();
+
+    createMagicBurst(
+        event.clientX,
+        event.clientY
+    );
+
+
+    setTimeout(function() {
+
+        showScene(cakeBreakScene);
+
+    }, 500);
+
+});
+
+
+/* =========================================
+   CAKE BUTTON 🎂
+
+   Actual interactive cake scene will be
+   created in our NEXT build.
+
+   For now this confirms that the complete
+   photo journey works.
+========================================= */
+
+cakeBtn.addEventListener("click", function(event) {
+
+    event.stopPropagation();
+
+    createMagicBurst(
+        event.clientX,
+        event.clientY
+    );
+
+    cakeBtn.textContent =
+        "Cake is being prepared... 🎂✨";
+
+});
