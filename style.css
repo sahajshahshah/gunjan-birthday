@@ -893,3 +893,923 @@ body::after {
     }
 
   }
+
+/* =========================================
+   PHOTO JOURNEY 📸🌸
+========================================= */
+
+.memory-scene {
+    padding-top: 35px;
+    padding-bottom: 35px;
+}
+
+.memory-card {
+    width: min(92vw, 560px);
+
+    margin: auto;
+
+    padding: 36px 24px;
+
+    text-align: center;
+
+    position: relative;
+
+    overflow: hidden;
+
+    border-radius: 32px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.88),
+            rgba(255,242,248,.78)
+        );
+
+    border: 1px solid rgba(255,255,255,.95);
+
+    box-shadow:
+        0 22px 65px rgba(181,91,125,.15),
+        inset 0 1px 0 rgba(255,255,255,.95);
+
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+}
+
+
+/* Tiny decorative glow */
+
+.memory-card::before {
+    content: "";
+
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    border-radius: 50%;
+
+    background: rgba(255,187,211,.18);
+
+    top: -80px;
+    right: -70px;
+
+    filter: blur(10px);
+
+    pointer-events: none;
+}
+
+
+/* =========================================
+   MEMORY NUMBER
+========================================= */
+
+.memory-number {
+    display: inline-block;
+
+    margin-bottom: 14px;
+
+    padding: 7px 14px;
+
+    border-radius: 999px;
+
+    background: rgba(255,236,244,.95);
+
+    color: #bd6988;
+
+    font-size: .82rem;
+
+    letter-spacing: 1px;
+
+    box-shadow:
+        0 7px 18px rgba(186,93,128,.08);
+}
+
+
+/* =========================================
+   MEMORY HEADING
+========================================= */
+
+.memory-heading {
+    max-width: 430px;
+
+    margin: 0 auto 25px;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: clamp(
+        1.65rem,
+        6vw,
+        2.35rem
+    );
+
+    line-height: 1.25;
+
+    color: #91516a;
+}
+
+
+/* =========================================
+   POLAROID 📸
+========================================= */
+
+.polaroid {
+    width: min(90%, 340px);
+
+    margin:
+        28px auto
+        32px;
+
+    padding:
+        13px
+        13px
+        18px;
+
+    background: #fffdfd;
+
+    border-radius: 6px;
+
+    box-shadow:
+        0 18px 35px
+        rgba(127,70,92,.18);
+
+    transform:
+        rotate(-2deg);
+
+    animation:
+        polaroidEntrance
+        .9s
+        cubic-bezier(.2,.85,.3,1.15);
+}
+
+
+.polaroid-right {
+    transform:
+        rotate(2.2deg);
+}
+
+
+.polaroid-left {
+    transform:
+        rotate(-2.5deg);
+}
+
+
+@keyframes polaroidEntrance {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(35px)
+            rotate(-6deg)
+            scale(.9);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            rotate(-2deg)
+            scale(1);
+    }
+
+}
+
+
+/* =========================================
+   PHOTO PLACEHOLDER
+
+   Later this becomes the real photo.
+========================================= */
+
+.photo-placeholder {
+    width: 100%;
+
+    aspect-ratio: 4 / 4.6;
+
+    border-radius: 3px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    background:
+        radial-gradient(
+            circle at 25% 20%,
+            rgba(255,255,255,.9),
+            transparent 28%
+        ),
+        linear-gradient(
+            145deg,
+            #ffe8f1,
+            #f7cddd
+        );
+
+    color: #a35f79;
+
+    overflow: hidden;
+
+    position: relative;
+}
+
+
+.photo-placeholder::before {
+    content: "🌸";
+
+    position: absolute;
+
+    font-size: 90px;
+
+    opacity: .09;
+
+    right: -15px;
+    bottom: -15px;
+
+    transform:
+        rotate(-15deg);
+}
+
+
+.photo-placeholder span {
+    font-size: 52px;
+
+    animation:
+        placeholderFloat
+        3s
+        ease-in-out
+        infinite;
+}
+
+
+.photo-placeholder p {
+    font-size: .76rem;
+
+    letter-spacing: 2px;
+
+    font-weight: 700;
+
+    opacity: .7;
+}
+
+
+@keyframes placeholderFloat {
+
+    0%,
+    100% {
+        transform:
+            translateY(0);
+    }
+
+    50% {
+        transform:
+            translateY(-7px);
+    }
+
+}
+
+
+/* =========================================
+   POLAROID CAPTION
+========================================= */
+
+.polaroid-caption {
+    margin-top: 14px;
+
+    padding:
+        0 5px;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: .91rem;
+
+    color: #765763;
+
+    line-height: 1.45;
+}
+
+
+/* =========================================
+   MEMORY TEXT
+========================================= */
+
+.memory-text {
+    max-width: 430px;
+
+    margin:
+        0 auto
+        25px;
+
+    color: #765b66;
+
+    line-height: 1.8;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+}
+
+
+.memory-text p {
+    margin:
+        14px
+        0;
+}
+
+
+.highlight-line {
+    color: #ae5f7d;
+
+    font-weight: 700;
+
+    padding:
+        13px
+        15px;
+
+    border-radius: 18px;
+
+    background:
+        rgba(255,232,241,.65);
+
+    box-shadow:
+        inset
+        0
+        0
+        0
+        1px
+        rgba(255,255,255,.7);
+}
+
+
+/* =========================================
+   MEMORY CAT 🐱
+========================================= */
+
+.memory-cat {
+    display: flex;
+
+    width: fit-content;
+
+    align-items: center;
+
+    gap: 7px;
+
+    margin:
+        5px auto
+        25px;
+
+    padding:
+        8px
+        13px;
+
+    border-radius: 18px;
+
+    background:
+        rgba(255,255,255,.9);
+
+    box-shadow:
+        0
+        10px
+        25px
+        rgba(164,82,113,.12);
+
+    transform:
+        rotate(-2deg);
+
+    cursor: pointer;
+
+    animation:
+        catMiniBounce
+        3s
+        ease-in-out
+        infinite;
+}
+
+
+.memory-cat-face {
+    font-size: 31px;
+}
+
+
+.memory-cat-text {
+    color: #985871;
+
+    font-size: .8rem;
+
+    font-weight: 700;
+}
+
+
+@keyframes catMiniBounce {
+
+    0%,
+    100% {
+        transform:
+            rotate(-2deg)
+            translateY(0);
+    }
+
+    50% {
+        transform:
+            rotate(2deg)
+            translateY(-5px);
+    }
+
+}
+
+
+/* =========================================
+   VIDEO CALL SCENE 📱
+========================================= */
+
+.call-scene .memory-card {
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(255,255,255,.95),
+            transparent 35%
+        ),
+        linear-gradient(
+            160deg,
+            rgba(255,242,249,.92),
+            rgba(239,222,244,.88)
+        );
+}
+
+
+.incoming-call {
+    width: min(100%, 330px);
+
+    margin:
+        0 auto
+        24px;
+
+    padding:
+        13px
+        17px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    text-align: left;
+
+    border-radius: 22px;
+
+    background:
+        rgba(255,255,255,.78);
+
+    border:
+        1px solid
+        rgba(255,255,255,.9);
+
+    box-shadow:
+        0
+        13px
+        30px
+        rgba(119,79,112,.12);
+
+    animation:
+        callPulse
+        2.2s
+        ease-in-out
+        infinite;
+}
+
+
+.call-icon {
+    width: 46px;
+    height: 46px;
+
+    display: grid;
+
+    place-items: center;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background:
+        #f5c5d8;
+
+    font-size: 22px;
+}
+
+
+.incoming-call div {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 3px;
+}
+
+
+.incoming-call small {
+    color: #9c7887;
+
+    font-size: .72rem;
+}
+
+
+.incoming-call strong {
+    color: #815366;
+
+    font-size: .91rem;
+}
+
+
+@keyframes callPulse {
+
+    0%,
+    100% {
+        transform:
+            scale(1);
+
+        box-shadow:
+            0
+            13px
+            30px
+            rgba(119,79,112,.12);
+    }
+
+    50% {
+        transform:
+            scale(1.025);
+
+        box-shadow:
+            0
+            15px
+            35px
+            rgba(169,92,131,.18);
+    }
+
+}
+
+
+/* =========================================
+   AI / FUTURE SCENE ✨
+========================================= */
+
+.future-scene .memory-card {
+    background:
+        radial-gradient(
+            circle at 50% 10%,
+            rgba(255,255,255,.98),
+            transparent 35%
+        ),
+        linear-gradient(
+            150deg,
+            rgba(255,240,247,.95),
+            rgba(255,225,238,.85)
+        );
+}
+
+
+.future-polaroid {
+    animation:
+        futureReveal
+        1.2s
+        cubic-bezier(.2,.85,.3,1.1);
+}
+
+
+.ai-placeholder {
+    background:
+        radial-gradient(
+            circle at 50% 25%,
+            rgba(255,255,255,.95),
+            transparent 30%
+        ),
+        linear-gradient(
+            145deg,
+            #f9dbe7,
+            #eed8ef,
+            #ffdce9
+        );
+}
+
+
+@keyframes futureReveal {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(25px)
+            scale(.88);
+
+        filter:
+            blur(6px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+        filter:
+            blur(0);
+    }
+
+}
+
+
+/* =========================================
+   FUNNY CAKE BREAK 🐱🎂
+========================================= */
+
+.funny-break-card {
+    min-height: 500px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.94),
+            rgba(255,231,241,.9)
+        );
+}
+
+
+.dramatic-text {
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    color: #87576a;
+
+    font-size: 1.3rem;
+
+    margin-bottom: 6px;
+}
+
+
+.second-line {
+    font-size: 1rem;
+
+    opacity: .8;
+
+    margin-bottom: 22px;
+}
+
+
+.big-cat {
+    font-size: 100px;
+
+    margin:
+        10px
+        0;
+
+    animation:
+        bigCatPeek
+        2.6s
+        ease-in-out
+        infinite;
+}
+
+
+@keyframes bigCatPeek {
+
+    0%,
+    100% {
+        transform:
+            translateY(5px)
+            rotate(-4deg);
+    }
+
+    50% {
+        transform:
+            translateY(-9px)
+            rotate(4deg);
+    }
+
+}
+
+
+.cat-speech {
+    width: min(100%, 330px);
+
+    margin:
+        5px auto
+        28px;
+
+    padding:
+        17px
+        18px;
+
+    border-radius:
+        22px
+        22px
+        22px
+        6px;
+
+    background:
+        white;
+
+    color: #87566a;
+
+    font-size: .9rem;
+
+    line-height: 1.5;
+
+    box-shadow:
+        0
+        14px
+        30px
+        rgba(157,75,107,.13);
+}
+
+
+.cat-speech strong {
+    color: #c35f85;
+
+    font-size: 1.05rem;
+}
+
+
+/* =========================================
+   EXTRA FLOWER DECORATIONS
+========================================= */
+
+.memory-card::after {
+    content: "🌸";
+
+    position: absolute;
+
+    left: -12px;
+    bottom: 25px;
+
+    font-size: 55px;
+
+    opacity: .13;
+
+    pointer-events: none;
+
+    animation:
+        memoryFlowerMove
+        4s
+        ease-in-out
+        infinite;
+}
+
+
+@keyframes memoryFlowerMove {
+
+    0%,
+    100% {
+        transform:
+            rotate(-10deg)
+            translateY(0);
+    }
+
+    50% {
+        transform:
+            rotate(4deg)
+            translateY(-8px);
+    }
+
+}
+
+
+/* =========================================
+   MOBILE PHOTO JOURNEY
+========================================= */
+
+@media (max-width: 600px) {
+
+    .memory-card {
+        width: 100%;
+
+        padding:
+            30px
+            18px;
+
+        border-radius:
+            27px;
+    }
+
+
+    .memory-heading {
+        font-size:
+            1.7rem;
+
+        margin-bottom:
+            20px;
+    }
+
+
+    .polaroid {
+        width:
+            min(94%, 320px);
+
+        margin-top:
+            23px;
+
+        margin-bottom:
+            27px;
+    }
+
+
+    .photo-placeholder span {
+        font-size:
+            46px;
+    }
+
+
+    .memory-text {
+        font-size:
+            .94rem;
+
+        line-height:
+            1.75;
+    }
+
+
+    .incoming-call {
+        width:
+            100%;
+    }
+
+
+    .big-cat {
+        font-size:
+            88px;
+    }
+
+
+    .funny-break-card {
+        min-height:
+            470px;
+    }
+
+}
+
+
+/* =========================================
+   VERY SMALL PHONES
+========================================= */
+
+@media (max-width: 360px) {
+
+    .memory-heading {
+        font-size:
+            1.5rem;
+    }
+
+
+    .memory-card {
+        padding:
+            27px
+            15px;
+    }
+
+
+    .polaroid {
+        width:
+            96%;
+    }
+
+
+    .polaroid-caption {
+        font-size:
+            .82rem;
+    }
+
+
+    .memory-text {
+        font-size:
+            .88rem;
+    }
+
+
+    .big-cat {
+        font-size:
+            78px;
+    }
+
+   }
