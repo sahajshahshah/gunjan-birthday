@@ -1889,3 +1889,58 @@ body::after {
     font-weight:600;
     color:#d85b92;
 }
+
+/* =========================================
+   🎵 FLOATING MUSIC BUTTON
+========================================= */
+
+.music-toggle {
+    position: fixed;
+    top: 18px;
+    right: 18px;
+
+    width: 52px;
+    height: 52px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.82);
+    backdrop-filter: blur(10px);
+
+    font-size: 22px;
+    cursor: pointer;
+
+    box-shadow: 0 6px 20px rgba(214, 105, 150, 0.25);
+
+    z-index: 1000;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.music-toggle:hover {
+    transform: scale(1.08);
+}
+
+.music-toggle:active {
+    transform: scale(0.92);
+}
+
+/* Music playing animation 🎶 */
+
+.music-toggle.playing {
+    animation: musicFloat 2s ease-in-out infinite;
+}
+
+@keyframes musicFloat {
+
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-4px) rotate(6deg);
+    }
+   }
