@@ -708,6 +708,12 @@ memoryFourBtn.addEventListener("click", function(event) {
    photo journey works.
 ========================================= */
 
+const cakeScene = document.getElementById("cakeScene");
+const flames = document.querySelectorAll(".flame");
+const wishStatus = document.getElementById("wishStatus");
+
+let candlesBlown = 0;
+
 cakeBtn.addEventListener("click", function(event) {
 
     event.stopPropagation();
@@ -717,7 +723,44 @@ cakeBtn.addEventListener("click", function(event) {
         event.clientY
     );
 
-    cakeBtn.textContent =
-        "Cake is being prepared... 🎂✨";
+    setTimeout(function() {
+
+        showScene(cakeScene);
+
+    }, 400);
 
 });
+
+function blowCandle(index) {
+
+    if (flames[index].classList.contains("out")) {
+        return;
+    }
+
+    flames[index].classList.add("out");
+
+    candlesBlown++;
+
+    wishStatus.textContent =
+        candlesBlown + " / 3 candles blown 🕯";
+
+    if (candlesBlown === 3) {
+
+        wishStatus.textContent =
+            "🎉 Wish complete! Happy Birthday Gunjan! 🎂✨";
+
+        createPetalCelebration();
+
+        for (let i = 0; i < 12; i++) {
+
+            setTimeout(function() {
+
+                createRandomSparkle();
+
+            }, i * 120);
+
+        }
+
+    }
+
+}
