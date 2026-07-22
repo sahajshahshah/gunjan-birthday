@@ -764,3 +764,54 @@ function blowCandle(index) {
     }
 
 }
+
+/* =========================================
+   BACKGROUND MUSIC 🎵
+========================================= */
+
+const backgroundMusic =
+    document.getElementById("backgroundMusic");
+
+const musicToggle =
+    document.getElementById("musicToggle");
+
+let musicPlaying = false;
+
+backgroundMusic.volume = 0.35;
+
+
+/* PLAY / PAUSE MUSIC */
+
+musicToggle.addEventListener("click", function(event) {
+
+    event.stopPropagation();
+
+    if (musicPlaying) {
+
+        backgroundMusic.pause();
+
+        musicPlaying = false;
+
+        musicToggle.textContent = "🔇";
+        musicToggle.classList.remove("playing");
+
+    } else {
+
+        backgroundMusic.play()
+            .then(function() {
+
+                musicPlaying = true;
+
+                musicToggle.textContent = "🎵";
+                musicToggle.classList.add("playing");
+
+            })
+            .catch(function(error) {
+
+                console.log("Music couldn't start:", error);
+
+            });
+
+    }
+
+});
