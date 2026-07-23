@@ -748,7 +748,7 @@ function blowCandle(index) {
 
         wishStatus.textContent =
             "🎉 Wish complete! Happy Birthday Gunjan! 🎂✨";
-
+document.getElementById("afterWishBtn").style.display = "inline-block";
         createPetalCelebration();
 
         for (let i = 0; i < 12; i++) {
@@ -829,4 +829,9 @@ const fadeIn = setInterval(function() {
 
     }
 
+});
+const afterWishBtn = document.getElementById("afterWishBtn");
+
+afterWishBtn.addEventListener("click", function () {
+    alert("Waittt... birthday isn't over yet 👀✨");
 });
