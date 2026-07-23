@@ -777,7 +777,7 @@ const musicToggle =
 
 let musicPlaying = false;
 
-backgroundMusic.volume = 0.35;
+backgroundMusic.volume = 0;
 
 
 /* PLAY / PAUSE MUSIC */
@@ -801,6 +801,21 @@ musicToggle.addEventListener("click", function(event) {
             .then(function() {
 
                 musicPlaying = true;
+               /* Smooth music fade-in 🎵 */
+let fadeVolume = 0;
+
+const fadeIn = setInterval(function() {
+
+    fadeVolume += 0.02;
+
+    if (fadeVolume >= 0.35) {
+        fadeVolume = 0.35;
+        clearInterval(fadeIn);
+    }
+
+    backgroundMusic.volume = fadeVolume;
+
+}, 100);
 
                 musicToggle.textContent = "🎵";
                 musicToggle.classList.add("playing");
