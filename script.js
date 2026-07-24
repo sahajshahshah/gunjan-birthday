@@ -833,5 +833,11 @@ const fadeIn = setInterval(function() {
 const afterWishBtn = document.getElementById("afterWishBtn");
 
 afterWishBtn.addEventListener("click", function () {
-    alert("Waittt... birthday isn't over yet 👀✨");
+    showScene("pandaKittyScene");
+});
+
+const openNextSurprise = document.getElementById("openNextSurprise");
+
+openNextSurprise.addEventListener("click", function () {
+    alert("Okay okay... next surprise loading 👀✨");
 });
