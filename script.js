@@ -833,7 +833,7 @@ const fadeIn = setInterval(function() {
 const afterWishBtn = document.getElementById("afterWishBtn");
 
 afterWishBtn.addEventListener("click", function () {
-    showScene("pandaKittyScene");
+    showScene(document.getElementById("pandaKittyScene"));
 });
 
 const openNextSurprise = document.getElementById("openNextSurprise");
