@@ -839,5 +839,11 @@ afterWishBtn.addEventListener("click", function () {
 const openNextSurprise = document.getElementById("openNextSurprise");
 
 openNextSurprise.addEventListener("click", function () {
-    alert("Okay okay... next surprise loading 👀✨");
+    showScene(document.getElementById("secretFileScene"));
+});
+
+const openSecretFile = document.getElementById("openSecretFile");
+
+openSecretFile.addEventListener("click", function () {
+    alert("CLASSIFIED FILE UNLOCKED 🔓👀");
 });
