@@ -847,3 +847,53 @@ const openSecretFile = document.getElementById("openSecretFile");
 openSecretFile.addEventListener("click", function () {
     alert("CLASSIFIED FILE UNLOCKED 🔓👀");
 });
+
+/* =========================================
+   PASSCODE ENTRANCE 🔐
+========================================= */
+
+const lockScreen = document.getElementById("lockScreen");
+const passcodeInput = document.getElementById("passcodeInput");
+const unlockBtn = document.getElementById("unlockBtn");
+const passcodeError = document.getElementById("passcodeError");
+
+/* We'll choose the real passcode here */
+const birthdayPasscode = "0530";
+
+unlockBtn.addEventListener("click", function () {
+
+    if (passcodeInput.value === birthdayPasscode) {
+
+        passcodeError.textContent = "";
+        unlockBtn.textContent = "Access granted ✨";
+
+        setTimeout(function () {
+            lockScreen.style.display = "none";
+        }, 700);
+
+    } else {
+
+        passcodeError.innerHTML =
+            `That passcode doesn't seem to be right. 🤍<br><br>
+             <button id="tryAgainBtn" class="primary-button">
+                 ← Try again
+             </button>`;
+
+        passcodeInput.style.display = "none";
+        unlockBtn.style.display = "none";
+
+        document
+            .getElementById("tryAgainBtn")
+            .addEventListener("click", function () {
+
+                passcodeError.innerHTML = "";
+                passcodeInput.value = "";
+                passcodeInput.style.display = "";
+                unlockBtn.style.display = "";
+                passcodeInput.focus();
+
+            });
+
+    }
+
+});
