@@ -2030,3 +2030,7 @@ body::after {
     margin-top: 15px;
     font-size: 14px;
 }
+
+body:has(#lockScreen:not([style*="display: none"])) {
+    overflow: hidden;
+       }
