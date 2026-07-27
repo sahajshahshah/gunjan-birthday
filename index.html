@@ -13,7 +13,38 @@
 </head>
 
 <body>
+<!-- PASSCODE ENTRANCE 🔐 -->
+<section class="lock-screen" id="lockScreen">
 
+    <div class="lock-card">
+
+        <div class="lock-icon">🔐</div>
+
+        <p class="tiny-text">A little something is waiting for you...</p>
+
+        <h1>This little world is locked.</h1>
+
+        <p class="soft-text">
+            Enter the passcode to continue. 🤍
+        </p>
+
+        <input
+            type="password"
+            id="passcodeInput"
+            class="passcode-input"
+            placeholder="Enter passcode"
+            autocomplete="off"
+        >
+
+        <button class="primary-button" id="unlockBtn">
+            Unlock ✨
+        </button>
+
+        <p class="passcode-error" id="passcodeError"></p>
+
+    </div>
+
+</section>
     <!-- Background decorations -->
     <div class="background-decor" aria-hidden="true">
         <span class="flower flower-one">🌸</span>
