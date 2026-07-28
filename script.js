@@ -870,24 +870,53 @@ birthdayVideo.addEventListener("ended", function () {
     }
 
 });
+
 /* =========================================
-   PASSCODE ENTRANCE 🔐
+   NUMBER PASSCODE ENTRANCE 🔐
 ========================================= */
 
 const lockScreen = document.getElementById("lockScreen");
-const passcodeInput = document.getElementById("passcodeInput");
-const unlockBtn = document.getElementById("unlockBtn");
+const passcodeDots = document.querySelectorAll("#passcodeDots span");
+const numberButtons = document.querySelectorAll("[data-number]");
+const deletePasscode = document.getElementById("deletePasscode");
+const submitPasscode = document.getElementById("submitPasscode");
 const passcodeError = document.getElementById("passcodeError");
 
-/* We'll choose the real passcode here */
 const birthdayPasscode = "0530";
 
-unlockBtn.addEventListener("click", function () {
+let enteredPasscode = "";
 
-    if (passcodeInput.value === birthdayPasscode) {
+function updatePasscodeDots() {
+    passcodeDots.forEach(function (dot, index) {
+        dot.classList.toggle("filled", index < enteredPasscode.length);
+    });
+}
 
-        passcodeError.textContent = "";
-        unlockBtn.textContent = "Access granted ✨";
+numberButtons.forEach(function (button) {
+    button.addEventListener("click", function () {
+
+        if (enteredPasscode.length < 4) {
+            enteredPasscode += button.dataset.number;
+            updatePasscodeDots();
+            passcodeError.textContent = "";
+        }
+
+    });
+});
+
+deletePasscode.addEventListener("click", function () {
+
+    enteredPasscode = enteredPasscode.slice(0, -1);
+    updatePasscodeDots();
+    passcodeError.textContent = "";
+
+});
+
+submitPasscode.addEventListener("click", function () {
+
+    if (enteredPasscode === birthdayPasscode) {
+
+        passcodeError.textContent = "Access granted ✨";
 
         setTimeout(function () {
             lockScreen.style.display = "none";
@@ -895,26 +924,23 @@ unlockBtn.addEventListener("click", function () {
 
     } else {
 
-        passcodeError.innerHTML =
-            `That passcode doesn't seem to be right. 🤍<br><br>
-             <button id="tryAgainBtn" class="primary-button">
-                 ← Try again
-             </button>`;
-
-        passcodeInput.style.display = "none";
-        unlockBtn.style.display = "none";
-
         document
-            .getElementById("tryAgainBtn")
-            .addEventListener("click", function () {
+            .getElementById("passcodeDots")
+            .classList.add("wrong");
 
-                passcodeError.innerHTML = "";
-                passcodeInput.value = "";
-                passcodeInput.style.display = "";
-                unlockBtn.style.display = "";
-                passcodeInput.focus();
+        passcodeError.textContent =
+            "That passcode doesn't seem to be right. Try again. 🤍";
 
-            });
+        setTimeout(function () {
+
+            document
+                .getElementById("passcodeDots")
+                .classList.remove("wrong");
+
+            enteredPasscode = "";
+            updatePasscodeDots();
+
+        }, 650);
 
     }
 
