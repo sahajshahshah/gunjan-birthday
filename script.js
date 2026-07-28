@@ -845,9 +845,31 @@ openNextSurprise.addEventListener("click", function () {
 const openSecretFile = document.getElementById("openSecretFile");
 
 openSecretFile.addEventListener("click", function () {
-    alert("CLASSIFIED FILE UNLOCKED 🔓👀");
+    showScene(document.getElementById("videoNoteScene"));
 });
 
+const playMessageBtn = document.getElementById("playMessageBtn");
+const birthdayVideoWrap = document.getElementById("birthdayVideoWrap");
+const birthdayVideo = document.getElementById("birthdayVideo");
+
+playMessageBtn.addEventListener("click", function () {
+
+    birthdayVideoWrap.classList.add("show");
+    playMessageBtn.style.display = "none";
+if (musicPlaying) {
+    backgroundMusic.pause();
+}
+    birthdayVideo.play();
+
+});
+
+birthdayVideo.addEventListener("ended", function () {
+
+    if (musicPlaying) {
+        backgroundMusic.play();
+    }
+
+});
 /* =========================================
    PASSCODE ENTRANCE 🔐
 ========================================= */
