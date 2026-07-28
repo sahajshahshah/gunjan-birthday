@@ -868,7 +868,9 @@ birthdayVideo.addEventListener("ended", function () {
     if (musicPlaying) {
         backgroundMusic.play();
     }
-
+document
+    .getElementById("afterVideoMessage")
+    .classList.add("show");
 });
 
 /* =========================================
