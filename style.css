@@ -2245,3 +2245,55 @@ body:has(#lockScreen:not([style*="display: none"])) {
     25% { transform: translateX(-8px); }
     75% { transform: translateX(8px); }
    }
+
+/* =========================================
+   AFTER VIDEO REVEAL ✨
+========================================= */
+
+.after-video-message {
+    display: none;
+    margin-top: 28px;
+    text-align: center;
+    opacity: 0;
+}
+
+.after-video-message.show {
+    display: block;
+    animation: afterVideoReveal 1s ease forwards;
+}
+
+.after-video-first,
+.after-video-second {
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+.after-video-message.show .after-video-first {
+    animation: afterVideoText .7s ease .3s forwards;
+}
+
+.after-video-message.show .after-video-second {
+    animation: afterVideoText .7s ease 1.1s forwards;
+}
+
+.after-video-message #afterVideoBtn {
+    opacity: 0;
+    transform: translateY(12px);
+}
+
+.after-video-message.show #afterVideoBtn {
+    animation: afterVideoText .7s ease 1.9s forwards;
+}
+
+@keyframes afterVideoReveal {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes afterVideoText {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+   }
