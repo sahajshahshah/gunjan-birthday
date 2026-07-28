@@ -2034,3 +2034,148 @@ body::after {
 body:has(#lockScreen:not([style*="display: none"])) {
     overflow: hidden;
        }
+
+/* =========================================
+   PERSONAL VIDEO LETTER 🌸🎬
+========================================= */
+
+.video-letter {
+    position: relative;
+    width: min(430px, 90%);
+    margin: auto;
+    padding: 48px 28px 38px;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            rgba(255,255,255,.94),
+            rgba(255,248,242,.96)
+        );
+
+    border: 1px solid rgba(190, 145, 130, .25);
+    border-radius: 8px 28px 8px 28px;
+
+    box-shadow:
+        0 22px 60px rgba(110, 70, 80, .16);
+
+    overflow: hidden;
+}
+
+.video-letter::before {
+    content: "";
+    position: absolute;
+    inset: 9px;
+
+    border: 1px solid rgba(207, 145, 167, .20);
+    border-radius: 6px 22px 6px 22px;
+
+    pointer-events: none;
+}
+
+.video-letter h2 {
+    margin: 8px 0 22px;
+    font-size: 28px;
+}
+
+.video-note-small {
+    font-size: 13px;
+    letter-spacing: 1px;
+    opacity: .65;
+}
+
+.video-note-message {
+    line-height: 1.8;
+    margin: 0 auto 22px;
+}
+
+.video-note-message p {
+    margin: 12px 0;
+}
+
+.letter-flower {
+    position: absolute;
+    font-size: 34px;
+    opacity: .85;
+    animation: letterFlowerFloat 3s ease-in-out infinite;
+}
+
+.flower-top {
+    top: 10px;
+    left: 13px;
+    transform: rotate(-15deg);
+}
+
+.flower-bottom {
+    right: 12px;
+    bottom: 10px;
+    transform: rotate(14deg);
+}
+
+.letter-sparkle {
+    position: absolute;
+    right: 24px;
+    top: 22px;
+    font-size: 18px;
+    animation: letterTwinkle 1.8s ease-in-out infinite;
+}
+
+.letter-decoration {
+    margin: 20px 0;
+    font-size: 20px;
+    letter-spacing: 7px;
+}
+
+.birthday-video-wrap {
+    display: none;
+    margin-top: 25px;
+
+    opacity: 0;
+    transform: translateY(18px);
+}
+
+.birthday-video-wrap.show {
+    display: block;
+
+    animation: videoReveal .8s ease forwards;
+}
+
+#birthdayVideo {
+    width: 100%;
+    border-radius: 18px;
+
+    box-shadow:
+        0 15px 35px rgba(80, 50, 60, .18);
+}
+
+@keyframes letterFlowerFloat {
+
+    0%, 100% {
+        margin-top: 0;
+    }
+
+    50% {
+        margin-top: -7px;
+    }
+}
+
+@keyframes letterTwinkle {
+
+    0%, 100% {
+        opacity: .35;
+        transform: scale(.8);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
+
+@keyframes videoReveal {
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+   }
