@@ -28,17 +28,30 @@
             Enter the passcode to continue. 🤍
         </p>
 
-        <input
-            type="password"
-            id="passcodeInput"
-            class="passcode-input"
-            placeholder="Enter passcode"
-            autocomplete="off"
-        >
+        <div class="passcode-dots" id="passcodeDots">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
 
-        <button class="primary-button" id="unlockBtn">
-            Unlock ✨
-        </button>
+<div class="number-pad" id="numberPad">
+    <button data-number="1">1</button>
+    <button data-number="2">2</button>
+    <button data-number="3">3</button>
+
+    <button data-number="4">4</button>
+    <button data-number="5">5</button>
+    <button data-number="6">6</button>
+
+    <button data-number="7">7</button>
+    <button data-number="8">8</button>
+    <button data-number="9">9</button>
+
+    <button id="deletePasscode">⌫</button>
+    <button data-number="0">0</button>
+    <button id="submitPasscode">✓</button>
+</div>
 
         <p class="passcode-error" id="passcodeError"></p>
 
