@@ -947,3 +947,96 @@ submitPasscode.addEventListener("click", function () {
     }
 
 });
+
+/* =========================================
+   OPEN WHEN LETTERS 💌
+========================================= */
+
+const afterVideoBtn = document.getElementById("afterVideoBtn");
+const openWhenScene = document.getElementById("openWhenScene");
+
+const openWhenLetters =
+    document.querySelectorAll(".open-when-letter");
+
+const openWhenMessage =
+    document.getElementById("openWhenMessage");
+
+const openWhenText =
+    document.getElementById("openWhenText");
+
+const closeOpenWhen =
+    document.getElementById("closeOpenWhen");
+
+const openWhenProgress =
+    document.getElementById("openWhenProgress");
+
+const openWhenContinue =
+    document.getElementById("openWhenContinue");
+
+let openedLetters = new Set();
+
+
+/* VIDEO → OPEN WHEN */
+
+afterVideoBtn.addEventListener("click", function () {
+
+    createPetalCelebration();
+
+    setTimeout(function () {
+        showScene(openWhenScene);
+    }, 450);
+
+});
+
+
+/* PERSONAL MESSAGES */
+
+const openWhenMessages = {
+
+    badDay:
+        "Hey, bad days happen. Don't let one difficult day make you forget all the good ones waiting for you. Take your time, do something that makes you feel a little lighter, and remember that tomorrow gets another chance. 🤍🌷",
+
+    overthinking:
+        "Okay, brain... enough 😭. Not every thought needs an answer right now. Some things make more sense with time, so don't put pressure on yourself to figure everything out at once. Take it easy, Gunjan. 🌸",
+
+    smile:
+        "Emergency smile delivery 🚨🌸. Here's your reminder that somewhere, someone probably remembers one of your random conversations and smiles because of it. And yes... I'm definitely included in that list 😂🤍"
+
+};
+
+
+/* OPEN A LETTER */
+
+openWhenLetters.forEach(function (letter) {
+
+    letter.addEventListener("click", function () {
+
+        const letterName = letter.dataset.letter;
+
+        openWhenText.textContent =
+            openWhenMessages[letterName];
+
+        openWhenMessage.classList.add("show");
+
+        openedLetters.add(letterName);
+        letter.classList.add("opened");
+
+        openWhenProgress.textContent =
+            openedLetters.size + " / 3 letters opened";
+
+        if (openedLetters.size === 3) {
+            openWhenContinue.style.display = "inline-block";
+        }
+
+    });
+
+});
+
+
+/* CLOSE CURRENT MESSAGE */
+
+closeOpenWhen.addEventListener("click", function () {
+
+    openWhenMessage.classList.remove("show");
+
+});
