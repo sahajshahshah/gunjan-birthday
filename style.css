@@ -2297,3 +2297,112 @@ body:has(#lockScreen:not([style*="display: none"])) {
         transform: translateY(0);
     }
    }
+
+/* =========================================
+   OPEN WHEN LETTERS 💌
+========================================= */
+
+.open-when-container {
+    width: min(460px, 92%);
+    margin: auto;
+    text-align: center;
+    padding: 35px 18px;
+}
+
+.open-when-container h2 {
+    font-size: 30px;
+    margin: 10px 0;
+}
+
+.open-when-grid {
+    display: grid;
+    gap: 16px;
+    margin: 30px 0;
+}
+
+.open-when-letter {
+    border: 1px solid rgba(200, 140, 160, .25);
+    border-radius: 22px;
+    padding: 20px 18px;
+
+    background: rgba(255, 250, 252, .92);
+    box-shadow: 0 10px 28px rgba(120, 70, 90, .10);
+
+    font-family: inherit;
+    font-size: 15px;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    transition: .25s ease;
+}
+
+.open-when-letter:hover {
+    transform: translateY(-3px);
+}
+
+.open-when-letter:active {
+    transform: scale(.96);
+}
+
+.envelope-icon {
+    font-size: 32px;
+    transition: .3s ease;
+}
+
+.open-when-letter.opened {
+    opacity: .65;
+}
+
+.open-when-letter.opened .envelope-icon {
+    transform: rotate(-8deg) scale(1.12);
+}
+
+/* MESSAGE THAT APPEARS AFTER OPENING */
+
+.open-when-message {
+    display: none;
+    position: relative;
+
+    margin: 25px 0;
+    padding: 30px 22px;
+
+    background: rgba(255, 255, 255, .95);
+    border-radius: 8px 25px 8px 25px;
+
+    box-shadow: 0 16px 40px rgba(110, 70, 85, .13);
+
+    line-height: 1.8;
+}
+
+.open-when-message.show {
+    display: block;
+    animation: openLetterReveal .65s ease forwards;
+}
+
+.message-flower {
+    position: absolute;
+    top: -13px;
+    right: 15px;
+    font-size: 28px;
+}
+
+.open-when-progress {
+    margin: 22px 0;
+    font-size: 13px;
+    opacity: .65;
+}
+
+@keyframes openLetterReveal {
+    from {
+        opacity: 0;
+        transform: translateY(15px) scale(.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
