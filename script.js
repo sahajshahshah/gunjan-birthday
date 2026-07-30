@@ -1170,3 +1170,21 @@ giftContinue.addEventListener("click", function () {
     alert("Next surprise coming soon... 🌸✨");
 
 });
+
+/* 🐱 Kitty Animation */
+
+const kitty = document.getElementById("kittyImage");
+
+if (kitty) {
+
+    kitty.addEventListener("click", () => {
+
+        kitty.style.transform = "scale(1.12) rotate(-4deg)";
+
+        setTimeout(() => {
+            kitty.style.transform = "";
+        }, 250);
+
+    });
+
+}
