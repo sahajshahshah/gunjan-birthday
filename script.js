@@ -1139,3 +1139,34 @@ function startAnalysis() {
     },60);
 
 }
+
+/* =========================================
+   🎁 GIFT SCENE
+========================================= */
+
+const giftScene = document.getElementById("giftScene");
+const giftBox = document.getElementById("giftBox");
+const giftMessage = document.getElementById("giftMessage");
+const giftContinue = document.getElementById("giftContinue");
+
+claimRewardBtn.addEventListener("click", function () {
+
+    showScene(giftScene);
+
+});
+
+giftBox.addEventListener("click", function () {
+
+    giftBox.style.transform = "scale(1.2) rotate(12deg)";
+    giftBox.textContent = "🎉";
+
+    giftMessage.classList.remove("hidden");
+    giftMessage.classList.add("show");
+
+});
+
+giftContinue.addEventListener("click", function () {
+
+    alert("Next surprise coming soon... 🌸✨");
+
+});
