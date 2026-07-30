@@ -2552,3 +2552,59 @@ body:has(#lockScreen:not([style*="display: none"])) {
 .gift-message.hidden{
     display:none;
    }
+
+/* 🐱 Birthday Kitty */
+
+#kittyImage{
+    width:240px;
+    max-width:100%;
+    display:block;
+    margin:0 auto;
+    user-select:none;
+    pointer-events:none;
+
+    animation:
+        kittyFloat 3s ease-in-out infinite;
+}
+
+@keyframes kittyFloat{
+
+    0%{
+        transform:translateY(0px);
+    }
+
+    50%{
+        transform:translateY(-8px);
+    }
+
+    100%{
+        transform:translateY(0px);
+    }
+
+                             }
+
+#kittyImage:hover{
+    transform:scale(1.05);
+}
+
+@keyframes kittyBlink{
+
+    0%,92%,100%{
+        filter:none;
+    }
+
+    94%{
+        filter:brightness(.92);
+    }
+
+    96%{
+        filter:brightness(.82);
+    }
+
+}
+
+#kittyImage{
+    animation:
+        kittyFloat 3s ease-in-out infinite,
+        kittyBlink 6s infinite;
+       }
