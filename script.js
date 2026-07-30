@@ -1244,29 +1244,3 @@ if (liveKitty){
 
        }
 
-/* 💬 Tap Me Bubble */
-
-.tap-bubble{
-    display:inline-block;
-    background:#ffffff;
-    color:#ff4f9a;
-    padding:8px 14px;
-    border-radius:999px;
-    font-weight:600;
-    margin-top:10px;
-    animation:bubbleBounce 1.8s infinite;
-    box-shadow:0 8px 18px rgba(0,0,0,.08);
-}
-
-@keyframes bubbleBounce{
-    0%,100%{
-        transform:translateY(0);
-    }
-    50%{
-        transform:translateY(-8px);
-    }
-}
-
-.gift-card{
-    box-shadow:0 20px 50px rgba(255,182,210,.35);
-               }
