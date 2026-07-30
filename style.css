@@ -2516,3 +2516,39 @@ body:has(#lockScreen:not([style*="display: none"])) {
     transition:.55s ease;
 
                                  }
+
+/* 🎁 GIFT SCENE */
+
+.gift-card{
+    width:min(420px,92%);
+    margin:auto;
+    padding:35px 25px;
+    text-align:center;
+    background:#fff;
+    border-radius:26px;
+    box-shadow:0 15px 40px rgba(0,0,0,.08);
+}
+
+.gift-box{
+    font-size:90px;
+    cursor:pointer;
+    margin:30px 0;
+    transition:.3s;
+    user-select:none;
+}
+
+.gift-box:hover{
+    transform:scale(1.1) rotate(-5deg);
+}
+
+.gift-message{
+    margin-top:25px;
+}
+
+.gift-message.show{
+    display:block;
+}
+
+.gift-message.hidden{
+    display:none;
+   }
