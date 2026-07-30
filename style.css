@@ -2705,3 +2705,35 @@ body:has(#lockScreen:not([style*="display: none"])) {
     50%{transform:scale(1.15) rotate(-4deg);}
     100%{transform:scale(1);}
 }
+
+/* 🌸 Animated Pastel Background */
+
+#giftScene{
+    background:
+    radial-gradient(circle at top,#ffe9f5 0%,#fff7fc 45%,#ffffff 100%);
+    overflow:hidden;
+}
+
+#giftScene::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+    radial-gradient(#ffd9ec 2px,transparent 2px);
+    background-size:45px 45px;
+    opacity:.35;
+    animation:bgMove 12s linear infinite;
+    pointer-events:none;
+}
+
+@keyframes bgMove{
+
+    from{
+        transform:translateY(0);
+    }
+
+    to{
+        transform:translateY(-45px);
+    }
+
+}
