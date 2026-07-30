@@ -1207,3 +1207,40 @@ kitty.addEventListener("click", function(e){
     },1500);
 
 });
+
+/* 🌸 Live Kitty */
+
+const liveKitty = document.getElementById("liveKitty");
+
+if (liveKitty){
+
+    liveKitty.addEventListener("click", function(){
+
+        liveKitty.classList.add("kitty-pop");
+
+        setTimeout(()=>{
+            liveKitty.classList.remove("kitty-pop");
+        },300);
+
+        for(let i=0;i<8;i++){
+
+            const heart=document.createElement("div");
+
+            heart.innerHTML="💖";
+            heart.className="floating-heart";
+
+            heart.style.left=(window.innerWidth/2+(Math.random()*120-60))+"px";
+            heart.style.top=(liveKitty.getBoundingClientRect().top+100)+"px";
+
+            document.body.appendChild(heart);
+
+            setTimeout(()=>{
+                heart.remove();
+            },1500);
+
+        }
+
+    });
+
+       }
+
