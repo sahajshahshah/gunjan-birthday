@@ -2695,3 +2695,13 @@ body:has(#lockScreen:not([style*="display: none"])) {
         opacity:0;
     }
 }
+
+.kitty-pop{
+    animation:kittyPop .3s ease;
+}
+
+@keyframes kittyPop{
+    0%{transform:scale(1);}
+    50%{transform:scale(1.15) rotate(-4deg);}
+    100%{transform:scale(1);}
+}
