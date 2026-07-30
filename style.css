@@ -2608,3 +2608,27 @@ body:has(#lockScreen:not([style*="display: none"])) {
         kittyFloat 3s ease-in-out infinite,
         kittyBlink 6s infinite;
        }
+
+/* ❤️ Floating Hearts */
+
+.floating-heart{
+    position:fixed;
+    font-size:24px;
+    pointer-events:none;
+    animation:heartUp 1.5s linear forwards;
+    z-index:9999;
+}
+
+@keyframes heartUp{
+
+    0%{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+
+    100%{
+        opacity:0;
+        transform:translateY(-120px) scale(1.8);
+    }
+
+   }
