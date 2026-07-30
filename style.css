@@ -2632,3 +2632,66 @@ body:has(#lockScreen:not([style*="display: none"])) {
     }
 
    }
+
+/* 🌸 Live Kitty Area */
+
+.kitty-background{
+    position:relative;
+    text-align:center;
+    margin:25px 0;
+    min-height:260px;
+}
+
+#liveKitty{
+    width:240px;
+    max-width:90%;
+    animation:liveFloat 3s ease-in-out infinite;
+    z-index:2;
+    position:relative;
+}
+
+.s1,.s2,.s3{
+    position:absolute;
+    font-size:26px;
+    animation:sparkleFloat 4s linear infinite;
+}
+
+.s1{
+    left:18%;
+    top:40px;
+}
+
+.s2{
+    right:18%;
+    top:80px;
+    animation-delay:1.3s;
+}
+
+.s3{
+    left:50%;
+    bottom:10px;
+    animation-delay:2.2s;
+}
+
+@keyframes liveFloat{
+    0%,100%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-12px);
+    }
+}
+
+@keyframes sparkleFloat{
+    0%{
+        transform:translateY(0) rotate(0deg);
+        opacity:0;
+    }
+    20%{
+        opacity:1;
+    }
+    100%{
+        transform:translateY(-60px) rotate(180deg);
+        opacity:0;
+    }
+}
