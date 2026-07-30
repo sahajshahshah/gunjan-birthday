@@ -1040,3 +1040,102 @@ closeOpenWhen.addEventListener("click", function () {
     openWhenMessage.classList.remove("show");
 
 });
+
+/* =========================================
+   GUNJAN.EXE ANALYSIS 🤖
+========================================= */
+
+const analysisScene =
+    document.getElementById("analysisScene");
+
+const scanFill =
+    document.getElementById("scanFill");
+
+const scanPercent =
+    document.getElementById("scanPercent");
+
+const analysisResult =
+    document.getElementById("analysisResult");
+
+const claimRewardBtn =
+    document.getElementById("claimRewardBtn");
+
+const scanLines = [
+    document.getElementById("scan1"),
+    document.getElementById("scan2"),
+    document.getElementById("scan3"),
+    document.getElementById("scan4"),
+    document.getElementById("scan5")
+];
+
+
+/* OPEN WHEN → ANALYSIS */
+
+openWhenContinue.addEventListener("click", function () {
+
+    showScene(analysisScene);
+
+    startAnalysis();
+
+});
+
+
+function startAnalysis() {
+
+    let progress = 0;
+
+    scanFill.style.width = "0%";
+    scanPercent.textContent = "0%";
+
+    scanLines.forEach(function(line){
+
+        line.classList.remove("show");
+
+    });
+
+    analysisResult.classList.remove("show");
+
+
+    const interval = setInterval(function(){
+
+        progress += 2;
+
+        scanFill.style.width =
+            progress + "%";
+
+        scanPercent.textContent =
+            progress + "%";
+
+        if(progress === 20){
+            scanLines[0].classList.add("show");
+        }
+
+        if(progress === 40){
+            scanLines[1].classList.add("show");
+        }
+
+        if(progress === 60){
+            scanLines[2].classList.add("show");
+        }
+
+        if(progress === 75){
+            scanLines[3].classList.add("show");
+        }
+
+        if(progress === 90){
+            scanLines[4].classList.add("show");
+        }
+
+        if(progress >= 100){
+
+            clearInterval(interval);
+
+            analysisResult.classList.add("show");
+
+            createPetalCelebration();
+
+        }
+
+    },60);
+
+}
