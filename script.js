@@ -1158,7 +1158,6 @@ claimRewardBtn.addEventListener("click", function () {
 giftBox.addEventListener("click", function () {
 
     giftBox.style.transform = "scale(1.2) rotate(12deg)";
-    giftBox.textContent = "🎉";
 
     giftMessage.classList.remove("hidden");
     giftMessage.classList.add("show");
