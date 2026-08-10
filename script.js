@@ -1130,7 +1130,8 @@ function startAnalysis() {
 
             clearInterval(interval);
 
-            analysisResult.classList.add("show");
+            analysisResult.classList.remove("hidden");
+analysisResult.classList.add("show");
 
             createPetalCelebration();
 
