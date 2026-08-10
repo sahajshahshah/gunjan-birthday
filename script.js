@@ -1141,34 +1141,34 @@ function startAnalysis() {
 }
 
 /* =========================================
-   🎁 GIFT SCENE
+/* =========================================
+   🎁 LITTLE GIFT SCENE
 ========================================= */
 
 const giftScene = document.getElementById("giftScene");
-const giftBox = document.getElementById("giftBox");
-const giftMessage = document.getElementById("giftMessage");
+const giftOpenBtn = document.getElementById("giftOpenBtn");
+const giftReveal = document.getElementById("giftReveal");
 const giftContinue = document.getElementById("giftContinue");
 
-claimRewardBtn.addEventListener("click", function () {
+/* Open Little Gift */
+if (giftOpenBtn && giftReveal) {
 
-    showScene(giftScene);
+    giftOpenBtn.addEventListener("click", function () {
 
-});
+        giftOpenBtn.style.opacity = "0";
+        giftOpenBtn.style.transform = "translateY(-10px)";
 
-giftBox.addEventListener("click", function () {
+        setTimeout(function () {
 
-    giftBox.style.transform = "scale(1.2) rotate(12deg)";
+            giftOpenBtn.style.display = "none";
 
-    giftMessage.classList.remove("hidden");
-    giftMessage.classList.add("show");
+            giftReveal.classList.remove("hidden");
 
-});
+        }, 350);
 
-giftContinue.addEventListener("click", function () {
+    });
 
-    alert("Next surprise coming soon... 🌸✨");
-
-});
+           }
 
 /* 🐱 Kitty Animation */
 
