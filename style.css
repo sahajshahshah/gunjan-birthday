@@ -1807,56 +1807,7 @@ body::after {
         height: 40px;
     }
    }
-/* Music Toggle Fix */
-.music-toggle {
-    position: fixed !important;
-    bottom: 25px !important;
-    right: 25px !important;
-    width: 52px !important;
-    height: 52px !important;
-    border-radius: 50% !important;
-    border: none !important;
-    background: white !important;
-    box-shadow: 0 8px 25px rgba(180,90,130,.25) !important;
-    font-size: 1.4rem !important;
-    cursor: pointer !important;
-    z-index: 9999 !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-}
-
-.music-toggle.playing {
-    background: linear-gradient(135deg, #f3a9c3, #df7fa3) !important;
-}
-
-/* Music Button - Top Right */
-.music-toggle {
-    position: fixed !important;
-    top: 20px !important;
-    right: 20px !important;
-    bottom: auto !important;
-    left: auto !important;
-    width: 48px !important;
-    height: 48px !important;
-    border-radius: 50% !important;
-    border: none !important;
-    background: white !important;
-    box-shadow: 0 6px 20px rgba(180, 90, 130, 0.3) !important;
-    font-size: 1.35rem !important;
-    cursor: pointer !important;
-    z-index: 9999 !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-}
-
-.music-toggle.playing {
-    background: linear-gradient(135deg, #f3a9c3, #df7fa3) !important;
-    color: white !important;
-}
-
-/* Music Button - Top Right Final */
+/* ===== MUSIC BUTTON - TOP RIGHT (FINAL) ===== */
 .music-toggle {
     position: fixed !important;
     top: 18px !important;
@@ -1880,4 +1831,5 @@ body::after {
 
 .music-toggle.playing {
     background: linear-gradient(135deg, #f3a9c3, #df7fa3) !important;
+    color: white !important;
 }
