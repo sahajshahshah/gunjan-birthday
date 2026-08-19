@@ -521,13 +521,11 @@ body::after {
 
 .second-line { margin-bottom: 25px; }
 
-big-cat {
+.big-cat {
     font-size: 5rem;
     margin: 15px 0;
-    animation: catLook 2.5s ease-in-.cake-content h2 {
-    margin-bottom: 12px;
+    animation: catLook 2.5s ease-in-out infinite;
 }
-
 .cake-text {
     margin-bottom: 30px;
     line-height: 1.7;
