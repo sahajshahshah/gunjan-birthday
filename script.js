@@ -312,7 +312,7 @@ function blowCandle(index) {
 }
 
 afterWishBtn.addEventListener("click", function () {
-    showScene(pandaKittyScene);
+    window.location.href = "infinity-test.html";
 });
 
 openNextSurprise.addEventListener("click", function () {
