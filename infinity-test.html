@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infinity Heart ❤️</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #fff;
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+#heartCanvas {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.title {
+    position: fixed;
+    top: 35px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+
+    color: #222;
+    font-size: clamp(32px, 8vw, 64px);
+    font-weight: 500;
+    white-space: nowrap;
+    letter-spacing: 1px;
+}
+
+.title span {
+    color: #e60087;
+}
+
+.message {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+
+    text-align: center;
+    color: #421b2f;
+
+    font-family: Arial, sans-serif;
+    font-weight: 700;
+    line-height: 1.35;
+
+    font-size: clamp(16px, 4vw, 27px);
+
+    text-shadow:
+        0 0 8px rgba(255, 255, 255, 0.9),
+        0 0 18px rgba(255, 180, 220, 0.8);
+}
+
+#hint {
+    position: fixed;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #b43a72;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    opacity: 0.7;
+    z-index: 5;
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="heartCanvas"></canvas>
+
+<div class="title">
+    Infinity <span>Heart</span>
+</div>
+
+<div class="message">
+    the longer I'm with you<br>
+    the more I love you
+</div>
+
+<div id="hint">
+    ♡ forever & always ♡
+</div>
+
+<script>
+const canvas = document.getElementById("heartCanvas");
+const ctx = canvas.getContext("2d");
+
+let width;
+let height;
+let dpr;
+
+const hearts = [];
+const heartCount = 170;
+
+function resize() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+    width = window.innerWidth;
+    height = window.innerHeight;
+
+    canvas.width = width * dpr;
+    canvas.height = height * dpr;
+
+    canvas.style.width = width + "px";
+    canvas.style.height = height + "px";
+
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+}
+
+window.addEventListener("resize", resize);
+resize();
+
+
+/* -----------------------------
+   Infinity mathematical path
+----------------------------- */
+
+function infinityPoint(t) {
+
+    const scale = Math.min(width, height) * 0.28;
+
+    const x =
+        Math.sin(t) * scale;
+
+    const y =
+        Math.sin(t) * Math.cos(t) * scale * 0.58;
+
+    return {
+        x: width / 2 + x,
+        y: height / 2 + y
+    };
+}
+
+
+/* -----------------------------
+   Heart drawing
+----------------------------- */
+
+function drawHeart(x, y, size, rotation, alpha, color) {
+
+    ctx.save();
+
+    ctx.translate(x, y);
+    ctx.rotate(rotation);
+
+    ctx.globalAlpha = alpha;
+    ctx.fillStyle = color;
+
+    ctx.beginPath();
+
+    const s = size;
+
+    ctx.moveTo(0, s * 0.35);
+
+    ctx.bezierCurveTo(
+        -s * 0.9,
+        -s * 0.2,
+        -s * 0.55,
+        -s,
+        0,
+        -s * 0.45
+    );
+
+    ctx.bezierCurveTo(
+        s * 0.55,
+        -s,
+        s * 0.9,
+        -s * 0.2,
+        0,
+        s * 0.35
+    );
+
+    ctx.fill();
+
+    ctx.restore();
+}
+
+
+/* -----------------------------
+   Create hearts
+----------------------------- */
+
+for (let i = 0; i < heartCount; i++) {
+
+    hearts.push({
+
+        t: Math.random() * Math.PI * 2,
+
+        speed:
+            0.00045 +
+            Math.random() * 0.0008,
+
+        size:
+            5 +
+            Math.random() * 10,
+
+        alpha:
+            0.35 +
+            Math.random() * 0.65,
+
+        rotation:
+            (Math.random() - 0.5) * 0.5,
+
+        color: [
+            "#ff2f92",
+            "#ff5ca8",
+            "#ff86bd",
+            "#f72585",
+            "#ffb3d1",
+            "#ff4d9d"
+        ][Math.floor(Math.random() * 6)],
+
+        offset:
+            (Math.random() - 0.5) * 0.15
+    });
+}
+
+
+/* -----------------------------
+   Floating background hearts
+----------------------------- */
+
+const floatingHearts = [];
+
+for (let i = 0; i < 35; i++) {
+
+    floatingHearts.push({
+
+        x: Math.random() * width,
+
+        y: Math.random() * height,
+
+        size: 5 + Math.random() * 12,
+
+        speed: 0.15 + Math.random() * 0.45,
+
+        drift: Math.random() * Math.PI * 2,
+
+        alpha: 0.15 + Math.random() * 0.35
+    });
+}
+
+
+/* -----------------------------
+   Animation
+----------------------------- */
+
+let time = 0;
+
+function animate() {
+
+    requestAnimationFrame(animate);
+
+    time += 1;
+
+    ctx.clearRect(0, 0, width, height);
+
+
+    /* Soft white background */
+
+    const gradient = ctx.createRadialGradient(
+        width / 2,
+        height / 2,
+        0,
+        width / 2,
+        height / 2,
+        Math.max(width, height) * 0.7
+    );
+
+    gradient.addColorStop(0, "#ffffff");
+    gradient.addColorStop(1, "#fff7fb");
+
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0, 0, width, height);
+
+
+    /* Floating hearts */
+
+    floatingHearts.forEach(h => {
+
+        h.y -= h.speed;
+
+        h.x += Math.sin(time * 0.01 + h.drift) * 0.25;
+
+        if (h.y < -30) {
+            h.y = height + 30;
+            h.x = Math.random() * width;
+        }
+
+        drawHeart(
+            h.x,
+            h.y,
+            h.size,
+            Math.sin(time * 0.01 + h.drift) * 0.15,
+            h.alpha,
+            "#ff75b5"
+        );
+    });
+
+
+    /* Infinity hearts */
+
+    hearts.forEach((heart, index) => {
+
+        heart.t += heart.speed;
+
+        if (heart.t > Math.PI * 2) {
+            heart.t -= Math.PI * 2;
+        }
+
+        const p = infinityPoint(
+            heart.t + heart.offset
+        );
+
+        const pulse =
+            1 +
+            Math.sin(time * 0.05 + index) * 0.12;
+
+        drawHeart(
+            p.x,
+            p.y,
+            heart.size * pulse,
+            heart.rotation,
+            heart.alpha,
+            heart.color
+        );
+    });
+
+
+    /* Glowing center */
+
+    const glowRadius =
+        35 +
+        Math.sin(time * 0.04) * 8;
+
+    const glow = ctx.createRadialGradient(
+        width / 2,
+        height / 2,
+        0,
+        width / 2,
+        height / 2,
+        glowRadius
+    );
+
+    glow.addColorStop(
+        0,
+        "rgba(255, 105, 180, 0.20)"
+    );
+
+    glow.addColorStop(
+        1,
+        "rgba(255, 105, 180, 0)"
+    );
+
+    ctx.fillStyle = glow;
+
+    ctx.beginPath();
+
+    ctx.arc(
+        width / 2,
+        height / 2,
+        glowRadius,
+        0,
+        Math.PI * 2
+    );
+
+    ctx.fill();
+}
+
+animate();
+</script>
+
+</body>
+</html>
