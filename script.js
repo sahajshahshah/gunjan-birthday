@@ -530,14 +530,8 @@ submitPasscode.addEventListener("click", function () {
 
     setTimeout(function () {
         lockScreen.style.display = "none";
-
-        const urlParams = new URLSearchParams(window.location.search);
-
-        if (urlParams.get("panda") === "1") {
-            showScene(pandaKittyScene);
-        }
     }, 700);
-} else {
+       }else {
         document.getElementById("passcodeDots").classList.add("wrong");
         passcodeError.textContent = "That passcode doesn't seem to be right. Try again. 🤍";
         setTimeout(function () {
