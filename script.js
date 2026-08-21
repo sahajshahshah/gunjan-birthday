@@ -578,3 +578,9 @@ musicToggle.addEventListener("click", function (event) {
             });
     }
 });
+
+const urlParams = new URLSearchParams(window.location.search);
+
+if (urlParams.get("panda") === "1") {
+    showScene(pandaKittyScene);
+}
