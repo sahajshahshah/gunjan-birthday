@@ -526,11 +526,18 @@ deletePasscode.addEventListener("click", function () {
 
 submitPasscode.addEventListener("click", function () {
     if (enteredPasscode === birthdayPasscode) {
-        passcodeError.textContent = "Access granted ✨";
-        setTimeout(function () {
-            lockScreen.style.display = "none";
-        }, 700);
-    } else {
+    passcodeError.textContent = "Access granted ✨";
+
+    setTimeout(function () {
+        lockScreen.style.display = "none";
+
+        const urlParams = new URLSearchParams(window.location.search);
+
+        if (urlParams.get("panda") === "1") {
+            showScene(pandaKittyScene);
+        }
+    }, 700);
+} else {
         document.getElementById("passcodeDots").classList.add("wrong");
         passcodeError.textContent = "That passcode doesn't seem to be right. Try again. 🤍";
         setTimeout(function () {
@@ -579,8 +586,4 @@ musicToggle.addEventListener("click", function (event) {
     }
 });
 
-const urlParams = new URLSearchParams(window.location.search);
 
-if (urlParams.get("panda") === "1") {
-    showScene(pandaKittyScene);
-}
